@@ -1,31 +1,37 @@
 import React, {useState} from 'react'
 
 
+
 export default function TextForm(props){
     const handleUpClick=()=>{
         // console.log("Uppercase was clicked");
         let NewText=text.toUpperCase();
         setText(NewText);
+        props.showAlert("Converted to UpperCase","success");
 
     }
     const handleLowClick=()=>{
         let NewText2=text.toLowerCase();
         setText(NewText2);
+        props.showAlert("Converted to LowerCase","success");
     }
     const handleCopy=()=>{
         let text=document.getElementById("myBox");
         text.select();
         text.setSelectionRange(0,9999);
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Text Copied","success");
 
     }
     const handleClearClick=()=>{
         let NewText2=" ";
         setText(NewText2);
+        props.showAlert("Text Cleared","success");
     }
     const handleExtraSpaces=()=>{
         let newText=text.split(/[  ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra spaces Removed","success");
     }
     const handleOnChange = (event)=>{
         // console.log("OnChange");
